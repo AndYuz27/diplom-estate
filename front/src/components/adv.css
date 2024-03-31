@@ -1,0 +1,20 @@
+.advatage_item{
+    width: 320px;
+    background-color: rgb(205, 255, 205);
+    border-radius: 16px;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 16px;
+    padding: 16px;
+}
+.advantage_item_img{
+    width: 280px;
+    height: 280px;
+    background-color: gray;
+    background-position:center;
+    background-size: cover;
+    border-radius: 50%;
+}
