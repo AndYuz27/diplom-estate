@@ -1,4 +1,4 @@
-import React from "react"
+import React,{ useEffect, useState } from "react"
 import '../App.css'
 import '../AAA.css'
 import bg_img from "../assets/bg.jpg"
@@ -10,7 +10,28 @@ import prlst_img from "../assets/price_list.png"
 import ChooseItem from "../components/ChooseItem"
 import Advantage from "../components/Advantage"
 import same_planing from '../assets/same_planing.jpg'
+import axios from "axios"
+
+
 export default function Landing(){
+    const [isLoad, setIsLoad] = useState(false)
+    const [estateList, seteEsteList] = useState([])
+
+    useEffect(() => {
+        axios.get(`http://localhost:8080/api/object`)
+            .then(res => {
+                console.log(res.data.rows)
+                seteEsteList(res.data.rows)
+                setIsLoad(true)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    
+}, []);
+
+
+
     let get_img = {
         backgroundImage: `url(${bg_img})`,
         backgroundPosition: "center",
@@ -22,8 +43,8 @@ export default function Landing(){
             <div className="img_1" style={get_img}>
                 <h2 className="fgg">Добро пожаловать на сайт агентсва недвижимости "Стромынский тракт"</h2>
                 <div className="btns_img">
-                <button style={{margin: "32px", fontSize: "14pt", padding: "8px", border:"none", borderRadius:"12px", backgroundColor: "lightgreen", boxShadow: "0px 0px 25px black", cursor: "pointer"}} onClick={() => window.location.href = "/catalog"}>Найти недвижимость</button>
-                <button style={{margin: "32px", fontSize: "14pt", padding: "8px", border:"none", borderRadius:"12px", backgroundColor: "lightgreen", boxShadow: "0px 0px 25px black", cursor: "pointer"}} onClick={() => alert('Under Construction')}>Связаться с сотрудниками</button>
+                <button className="btn_land" onClick={() => window.location.href = "/catalog"}>Найти недвижимость</button>
+                <button className="btn_land" onClick={() => alert('Under Construction')}>Связаться с сотрудниками</button>
 
                 </div>
             </div>
@@ -53,6 +74,23 @@ export default function Landing(){
                     <Advantage name='Внесение аванса онлайн' img="https://6422570.ru/media/uploads/2018/12/05/thumbnail-f5d80777051662bb589d265acd227538.jpeg" desr="На нашем сайте вы можете внести аванс онлайн"/>
                     <Advantage name='Внесение аванса онлайн' img="https://6422570.ru/media/uploads/2018/12/05/thumbnail-f5d80777051662bb589d265acd227538.jpeg" desr="На нашем сайте вы можете внести аванс онлайн"/>
                 </div>
+            </div>
+            <div className="last_ad_estate">
+                <h2 className="last_ad_estate__h2">Последние объявления на сайте</h2>
+            <div className="last_ad_estate__list"> {/*Лист каталога */}
+
+                {(estateList.slice(-4)).map((e) => {return <div className="catalog_list_item" key={e.id_object} onClick={() => window.location.href =  `/catalog/${e.id_object}`}>
+                <div className="catalog_list_item-img">
+                        <img className="catalog_list_item-img-a" src={e.image} width="320px" alt="estate"/>
+                    </div>
+                    <div className="catalog_list_item-short-info">
+                        <h2 className="catalog_list_item-short-info__hdr-text">{e.name_object}</h2>
+                        <p className="catalog_list_item-short-info__text">{e.price} {e.currency}</p>
+                        <p className="catalog_list_item-short-info__location">{e.address}</p>
+                        <p className="catalog_list_item-short-info__floor">{e.cnt_floors} этаж  {e.cnt_rooms} комн.</p>
+                    </div>
+                            </div>})}
+            </div>
             </div>
         </div>
     )

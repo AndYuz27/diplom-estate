@@ -55,3 +55,116 @@
     display: flex;
     justify-content: space-between;
 }
+.last_ad_estate{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.last_ad_estate__list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+@media only screen and (max-width: 600px) {
+
+    .choose_type_items{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .choose_type_item{
+        padding: 15px;
+        width: 90%;
+        height: 192px;
+        margin: 16px;
+    }
+    .choose_type{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: lightgreen;
+        padding: 5px;
+        height: 100%;
+    }
+    .img_choose_cover {
+        width: 128px;
+        height: 128px;
+    }
+
+    .advantage_list{
+        /* width: 800px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .last_ad_estate__list{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+  }
+
+  /* For 4:3 Screens */
+@media only screen and (max-width: 1024px) {
+
+    .img_1{
+      width: 100%;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: aliceblue;
+    }
+    .fgg{
+      font-size: 12px;
+      text-shadow:0px 0px 19px #282c34 ;
+      text-align: center;
+    
+    }
+    .header-nav{
+      display: none;
+    }
+    .last_ad_estate__h2{
+      font-size: 14pt;
+    }
+    .btn_land{
+      margin: 16px;
+      font-size: 8pt
+    }
+    /* .choose_type_items{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      width: inherit;
+      gap: 64px;
+    } */
+    .choose_type_item{
+        padding: 15px;
+        width: 90%;
+        height: 192px;
+        margin: 16px;
+    }
+  }
+  
+  
+  @media print {
+    .info-img{
+        display: none;
+    }
+    .info{
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items:flex-start
+        }
+        .estate_info{
+            flex-direction: column;
+        }
+  
+  }

@@ -1,7 +1,13 @@
+.admin_table{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 90%;
   }
   
   td, th {
@@ -13,9 +19,23 @@ table {
   tr:nth-child(even) {
     background-color: #dddddd;
   }
+  tr:hover{
+    font-weight: 600;
+  }
 
   .admin_table__serach_holder{
     width: 320px;
     height: 32px;
-    font-size: 24px;
+    font-size: 14pt;
+    text-align: left;
+    margin: 24px;
+    padding: 8px;
+
   }
+  .admin_table__table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  

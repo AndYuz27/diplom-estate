@@ -1,0 +1,26 @@
+.vacancy__list{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center; 
+}
+.vacancy__list_item{
+
+    width: 512px;
+    box-shadow: 0 0 12px #000;
+    border-radius: 8px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 16px;
+    background-color: #fff;
+    transition: 0.3s;
+}
+.vacancy__list_item:hover{
+    background-color: rgb(236, 236, 236);
+}
+.vacancy_list_item_name{
+    font-size: 24pt;
+}
+.vacancy__title{
+    text-align: center;
+}

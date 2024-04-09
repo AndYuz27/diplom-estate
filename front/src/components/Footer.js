@@ -1,3 +1,4 @@
+import '../App.css'
 import { Link } from "react-router-dom"
 export default function Footer() {
 
@@ -35,9 +36,9 @@ export default function Footer() {
     }
 
     return(
-        <div className="header" style={style_hdr}>
-            <Link className="header-logo_a" style={style_nav_a_logo} to="/">2024 CREATED BY AndYuz27</Link>
-            <div className="header-nav">
+        <div className="footer" style={style_hdr}>
+            <Link className="footer-logo_a" style={style_nav_a_logo} to="/">2024 CREATED BY AndYuz27</Link>
+            <div className="footer-nav">
                 <p>1994-2024 ООО Стромынский тракт</p>
             </div>
         </div>

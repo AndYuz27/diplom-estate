@@ -1,0 +1,78 @@
+.admin-page__right_img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.admin-page__left{
+    margin-right: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.admin-page{
+    margin-top: 32px;
+}
+.admin-page__right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+.admin-page__right_position{
+margin: 4px;
+}
+.admin-page__right_fio{
+    margin: 4px;
+    }
+
+.admin-page__right_menu_btn{
+    margin: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 14pt;
+}
+.admin-page__right_menu_btn:hover{
+background-color: aqua;
+
+}
+.fa-solid{
+    margin-right: 8px;
+}
+.admin-page__left_btn{
+    margin-bottom: 15px;
+    text-decoration: none;
+    font-size: 14pt;
+    font-weight: 600;
+    color: grey;
+}
+.admin-page__left_btn:hover{
+    color: #000;
+}
+.admin_upload_obj__form{   
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.admin_upload_obj__input{
+    width: 320px;
+    height: 27px;
+    border-radius: 8px;
+    font-size: 10pt;
+    text-align: left;
+}
+.admin_upload_obj__input:hover{
+    border: 1px solid;
+    background-color: lightgreen;
+}
+
+/* .admin-page{
+    min-height: 80vh;
+} */
