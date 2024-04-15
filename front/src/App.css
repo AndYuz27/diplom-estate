@@ -116,6 +116,12 @@ background-color: gray;
   width: 512px;
   height: 512px;
 }
+.admin_denied{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /* input{
   width: 320px;
   height: 48px;
@@ -219,14 +225,14 @@ background-color: gray;
 }
 /* style={{margin: "32px", fontSize: "14pt", padding: "8px", border:"none", borderRadius:"12px", backgroundColor: "lightgreen", boxShadow: "0px 0px 25px black", cursor: "pointer"}} */
 
-.btn_land{
+.btn_land, .Auth_submit{
   margin: 32px;
   font-size: 14pt;
   padding: 8px;
   border: none;
   border-radius: 12px;
   background-color: lightgreen;
-  box-shadow: 0px 0px 25px black;
+  box-shadow: 0px 0px 10px black;
   cursor: pointer;
 }
 .header-nav_mob{
@@ -241,12 +247,31 @@ background-color: gray;
   text-decoration: none;
   color: black;
 }
-.fa-bars{
+.Auth_in{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+label{
+ margin-right: 15px;
+ font-size: 16pt;
+}
+.Auth_input{
+  font-size: 16pt;
+}
+.Auth_submit{
+  margin: 5px;
+  width: 160px;
 }
 
+.Auth_form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 /* For mobile */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 500px) {
   .header-nav_mob{
     display:block;
   }
@@ -297,13 +322,8 @@ background-color: gray;
 
 
 
-
-
-
-
-
 /* For 4:3 Screens */
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width:1023px) {
 
   .img_1{
     width: 100%;
@@ -314,6 +334,10 @@ background-color: gray;
     align-items: center;
     color: aliceblue;
   }
+
+.header-nav_a{
+  font-size: 10pt;
+}
   .fgg{
     font-size: 12px;
     text-shadow:0px 0px 19px #282c34 ;

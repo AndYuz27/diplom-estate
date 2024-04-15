@@ -4,6 +4,7 @@ const path = require("path");
 var cors = require('cors')
 var util = require('util');
 
+
 const multer = require('multer');
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -19,7 +20,7 @@ const upload = multer({ storage: storage })
 
 var userRouter = require('./routers/users.router');
 var objectRouter = require('./routers/estate.router');
-
+// var  user  =  require("./routers/user.router");
 
 let now = new Date();
 
@@ -44,6 +45,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 
 app.use('/api', userRouter)
 app.use('/api', objectRouter)
+// app.use("/api/user",  user); 
 
 
 

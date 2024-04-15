@@ -10,7 +10,7 @@ export default function Header() {
             height: "64px",
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-between",
+            justifyContent: "space-around",
             alignItems: "center",
 
         
@@ -44,22 +44,25 @@ function setMdl(e){
     } else{
         setModalHdr('none')
     }
-}
-
+}//
+let st = localStorage.getItem('isAuthCmp')
     return(
         <div className="header" style={style_hdr}>
             <Link className="header-logo_a" style={style_nav_a_logo} to="/"><img  src={logo_img} alt="Стромынский тракт" height="64px"/></Link>
             <div className="header-nav">
                 <Link className="header-nav_a" style={style_nav_a} to="/catalog">Каталог недвижимости</Link>
                 <Link className="header-nav_a" style={style_nav_a} to="/about">Об организации</Link>
-                <Link className="header-nav_a" style={style_nav_a} to="/auth/empl">Войти</Link>
+                {!st && <Link className="header-nav_a" style={style_nav_a} to="/auth/empl">Войти</Link>}
+                {st && <Link  to={`/admin`} className="header-nav_a" >Профиль</Link>}
+
             </div>
             <div className="header-nav_mob" >
             <i className="fa-solid fa-bars" onClick={() => setMdl()} style={{  marginRight: "24px"}}></i>
                 <div className="header-nav_mob_modal" style={{display: modalHdr}}>
                     <Link className="header-nav_a" style={style_nav_a} to="/catalog" onClick={() => setMdl()}>Каталог недвижимости</Link>
                     <Link className="header-nav_a" style={style_nav_a} to="/about" onClick={() => setMdl()}>Об организации</Link>
-                    <Link className="header-nav_a" style={style_nav_a} to="/auth/empl" onClick={() => setMdl()}>Войти</Link>
+                    {!st && <Link className="header-nav_a" style={style_nav_a} to="/auth/empl">Войти</Link>}
+                {st && <Link  to={`/admin`} className="header-nav_a" >Профиль</Link>}
                 </div>
                 
             </div>

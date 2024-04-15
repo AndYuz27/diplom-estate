@@ -3,18 +3,25 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css"
 import { useEffect, useState } from "react";
+import ModalEstate from "../components/ModalEstate";
 
 export default function PageOfEstate(){
     const {id} = useParams()
     const [data, setData] = useState([])
+    const [imageArray, setimageArray] = useState([])
     const [dataProfile, setDataProfile] = useState([])
+    const [dataModal, setDataModal] = useState('')
     const [idp, setIdp] = useState('')
+    const [modalActive, setModalActive] = useState(false)
+
 useEffect(() => {
     if ( id ) {
         axios.get(`http://localhost:8080/api/object/${id}`)
             .then(res => {
                 console.log(res.data.rows)
                 setData(res.data.rows)
+                setimageArray(res.data.rows[0].image)
+                console.log(res.data.rows[0].image)
                 setIdp(res.data.rows[0].who_upload)
             })
             .catch(err => {
@@ -35,21 +42,36 @@ useEffect(() => {
         })
     }
 },[ idp ])
+
+
+function gethhh(iii){
+    axios.get(`http://localhost:8080/api/object/${id}`)
+    .then(res => {
+        console.log(res.data.rows[0].image[iii])
+        setDataModal(res.data.rows[0].image[iii])
+    })
+}
+
+
     if(data.length === 0) {
         return<h2>Данные об объекте еще не занесены или не существуют</h2>
     }else{
     return(
         <div className="page-of-estate">
-             {data.map((e) => {return <div className="parse" key={e.id_object}>
+             {data.map((e) => {return <div className="parse" key={e.id}>
             <div className="page-of-estate__main-info">
             <div className="page-of-estate__left">
                 <div className="page-of-estate__left_img">
-                    <img className="page-of-estate__left_img_tag" src={e.image} width="600" alt="estate" />
+                    <img className="page-of-estate__left_img_tag" src={e.image[0]} width="600" alt="estate" />
                     <div className="page-of-estate__left_img_carousel">
-                        <img className="page-of-estate__left_img_tag-thumb" src={e.image} width='144' alt="estate" />
-                        <img className="page-of-estate__left_img_tag-thumb" src={e.image} width='144' alt="estate" />
-                        <img className="page-of-estate__left_img_tag-thumb" src={e.image} width='144' alt="estate" />
-                        <img className="page-of-estate__left_img_tag-thumb" src={e.image} width='144' alt="estate" />
+                    {imageArray.map((imgSrc, index) => (<img src={imgSrc} key={index} className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
+                    setModalActive(true)
+                    gethhh(index)}} />))}
+                                <ModalEstate active={modalActive} setActive={setModalActive}>
+            <div className="page-of-estate__main-info">
+                <img src={dataModal} alt="mmm" width='1000'/>
+            </div>
+            </ModalEstate>
                     </div>
                 </div>
                 <div className="page-of-estate__desc" src="" alt="estate" >
@@ -108,6 +130,7 @@ useEffect(() => {
                 </div>
             </div>
             </div>})}
+
         </div>
     )
     }

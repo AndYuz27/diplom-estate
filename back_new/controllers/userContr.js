@@ -9,7 +9,7 @@ class UserController {
         const {name, sur, lastn, email, pass, pass_series, pass_num, passget, dept_code, tax_id, posid, taid } = req.body
         var salt = bcrypt.genSaltSync(10);
 var hash = bcrypt.hashSync(pass, salt);
-        const newUser = await db.query(`insert into Employes(name, surname, last_name, email, password, pass_series, pass_num, who_get, dept_code, tax_id, PositionID, TypeAccessID) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`, [name, sur, lastn, email, hash, pass_series, pass_num, passget, dept_code, tax_id, posid, taid ])
+        const newUser = await db.query(`insert into Employes(name, surname, last_name, email, password, pass_series, pass_num, who_get, dept_code, tax_id, PositionID, TypeAccessID) values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *`, [name, sur, lastn, email, pass, pass_series, pass_num, passget, dept_code, tax_id, posid, taid ])
         console.log("data is added (user)")
         res.json(newUser)
 
@@ -22,6 +22,12 @@ var hash = bcrypt.hashSync(pass, salt);
     async getUser(req, res){
         const id = req.params.id
         const users = await db.query(`select * from Employes where id_emp =$1`, [id])
+              res.json(users)
+
+    }
+    async getUserByEmail(req, res){
+        const id = req.params.id
+        const users = await db.query(`select * from Employes where email =$1`, [id])
               res.json(users)
 
     }

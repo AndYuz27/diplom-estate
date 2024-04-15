@@ -13,17 +13,23 @@ import AboutOrg from "./Pages/AboutOrg";
 import AdminTable from "./Pages/AdminTable";
 import UploadObject from "./Pages/UploadObjects";
 import Vacancy from "./Pages/Vacancy";
+import Services from "./Pages/Services";
+import ServicePage from "./Pages/ServicePage";
+import PriceList from "./Pages/PriceList";
 export default function Main(){
     return(
         <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/services/:id" element={<ServicePage />} />
+        <Route path="/services-price-List" element={<PriceList />} />
         <Route path="/catalog/sep/:id" element={<CatalogSepType />} />
         <Route path="/city/:id_city" element={<CityInfo />} />
         <Route path="/auth/client" element={<AuthClient />} />
-        <Route path="/admin/" element={<AdminPage />} />
-        <Route path="/admin/table" element={<AdminTable />} />
-        <Route path="/admin/upload" element={<UploadObject />} />
+            <Route path="/admin/" element={<AdminPage />} />
+            <Route path="/admin/table" element={<AdminTable />} />
+            <Route path="/admin/upload" element={<UploadObject />} />
         <Route path="/about/" element={<AboutOrg />} />
         <Route path="/about/vacancy" element={<Vacancy />} />
         <Route path="/auth/empl" element={<AuthEmpl />} />

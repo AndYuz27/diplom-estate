@@ -79,9 +79,9 @@ export default function Landing(){
                 <h2 className="last_ad_estate__h2">Последние объявления на сайте</h2>
             <div className="last_ad_estate__list"> {/*Лист каталога */}
 
-                {(estateList.slice(-4)).map((e) => {return <div className="catalog_list_item" key={e.id_object} onClick={() => window.location.href =  `/catalog/${e.id_object}`}>
+                {(estateList.slice(-4)).map((e) => {return <div className="catalog_list_item" key={e.id} onClick={() => window.location.href =  `/catalog/${e.id}`}>
                 <div className="catalog_list_item-img">
-                        <img className="catalog_list_item-img-a" src={e.image} width="320px" alt="estate"/>
+                        <img className="catalog_list_item-img-a" src={e.image[0]} width="320px" alt="estate"/>
                     </div>
                     <div className="catalog_list_item-short-info">
                         <h2 className="catalog_list_item-short-info__hdr-text">{e.name_object}</h2>
