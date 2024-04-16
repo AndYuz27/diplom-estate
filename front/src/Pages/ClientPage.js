@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import './adminstyle.css'
 import axios from "axios";
 
-export default function AdminPage() {
+export default function ClientPage() {
 
     const [data, setData] = React.useState([])
 
@@ -33,11 +33,6 @@ let id = localStorage.getItem('cmp_name')
 
     }
 
-    function DeAuth(){
-        localStorage.removeItem('isAuthCmp')
-        window.location.href=`/`;
-    }
-
 if (admin_status === null){
     return <AccessDenied_adminpage/>
 }else{
@@ -56,7 +51,7 @@ if (admin_status === null){
                 <h3 className="admin-page__right_fio">{e.surname} {e.name} {e.last_name}</h3>
                 <h4 className="admin-page__right_position">Должность: Риелтор</h4>
                 <div className="admin-page__right_menu">
-                    <button className="admin-page__right_menu_btn" onClick={() => DeAuth()}><i className="fa-solid fa-door-open"></i>Выйти из ЛК</button>
+                    <button className="admin-page__right_menu_btn"><i className="fa-solid fa-door-open"></i>Выйти из ЛК</button>
                     <button className="admin-page__right_menu_btn"><i className="fa-solid fa-message"></i>Сообщения</button>
                 </div>
             </div>

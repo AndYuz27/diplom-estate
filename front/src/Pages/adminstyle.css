@@ -59,7 +59,8 @@ background-color: aqua;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    
 }
 .admin_upload_obj__input{
     width: 320px;
@@ -71,6 +72,12 @@ background-color: aqua;
 .admin_upload_obj__input:hover{
     border: 1px solid;
     background-color: lightgreen;
+}
+.admin_upload_obj{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .admin-page{

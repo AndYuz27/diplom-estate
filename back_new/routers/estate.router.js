@@ -7,6 +7,7 @@ console.log('router is on')
 
 // router.post('/object', ObjectController.createUser)
 router.get('/object', cors(), ObjectController.getObjects)
+router.post('/object', cors(), ObjectController.setObject)
 router.get('/service', cors(), ObjectController.getObjectsServe)
 router.get('/service/:id', cors(), ObjectController.getObjectServe)
 router.get('/object/:id', cors(), ObjectController.getObject)

@@ -16,11 +16,13 @@ import Vacancy from "./Pages/Vacancy";
 import Services from "./Pages/Services";
 import ServicePage from "./Pages/ServicePage";
 import PriceList from "./Pages/PriceList";
+import Chat from "./Pages/Chat";
 export default function Main(){
     return(
         <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/chat" element={<Chat />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:id" element={<ServicePage />} />
         <Route path="/services-price-List" element={<PriceList />} />

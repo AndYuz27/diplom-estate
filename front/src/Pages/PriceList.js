@@ -1,9 +1,17 @@
 import React from "react";
 
+
+let style_plist = {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center"
+}
+
 export default function PriceList(){
 
     return(
-        <div className="price_list">
+        <div className="price_list" style={style_plist}>
             <h2 className="price_list_title">
                 Прайс-лист услуг
             </h2>

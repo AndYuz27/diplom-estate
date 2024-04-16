@@ -117,7 +117,7 @@ export default function Catalog() {
                             setModalActive(true)
                             gethhh(e.id, e.who_upload)}}>
                         <div className="catalog_list_item-img">
-                                <img className="catalog_list_item-img-a" src={e.image[0]} width="320px" alt="estate"/>
+                                <img className="catalog_list_item-img-a" src={e.image1} width="320px" alt="estate"/>
                             </div>
                             <div className="catalog_list_item-short-info">
                                 <h2 className="catalog_list_item-short-info__hdr-text">{e.name_object}</h2>
@@ -133,7 +133,7 @@ export default function Catalog() {
             <div className="page-of-estate__main-info">
             {modalData.map((e) => {return <div className="page-of-estate__left">
                 <div className="page-of-estate__left_img">
-                    <img className="page-of-estate__left_img_tag" src={e.image[0]} width="400" alt="estate" />
+                    <img className="page-of-estate__left_img_tag" src={e.image1} width="400" alt="estate" />
                 </div>
                 <div className="page-of-estate__desc" src="" alt="estate" >
                     <h3 className="page-of-estate__desc_h3">Описание</h3>

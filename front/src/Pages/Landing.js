@@ -63,7 +63,7 @@ export default function Landing(){
                     <ChooseItem icon={house_img} name_icon="Частные дома" link_icon="/catalog/sep/Загородный дом"/>
                     <ChooseItem icon={aprt_img} name_icon="Квартиры" link_icon="/catalog/sep/квартира"/>
                     <ChooseItem icon={sumhouse_img} name_icon="Дачи" link_icon="/catalog/sep/Дачи"/>
-                    <ChooseItem icon={prlst_img} name_icon="Прайс-лист услуг" link_icon="/6789"/>
+                    <ChooseItem icon={prlst_img} name_icon="Прайс-лист услуг" link_icon="/services-price-List"/>
                 </div>
             </div>
             <div className="advantage">
@@ -81,7 +81,7 @@ export default function Landing(){
 
                 {(estateList.slice(-4)).map((e) => {return <div className="catalog_list_item" key={e.id} onClick={() => window.location.href =  `/catalog/${e.id}`}>
                 <div className="catalog_list_item-img">
-                        <img className="catalog_list_item-img-a" src={e.image[0]} width="320px" alt="estate"/>
+                        <img className="catalog_list_item-img-a" src={e.image1} width="320px" alt="estate"/>
                     </div>
                     <div className="catalog_list_item-short-info">
                         <h2 className="catalog_list_item-short-info__hdr-text">{e.name_object}</h2>

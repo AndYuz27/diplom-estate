@@ -45,11 +45,8 @@ useEffect(() => {
 
 
 function gethhh(iii){
-    axios.get(`http://localhost:8080/api/object/${id}`)
-    .then(res => {
-        console.log(res.data.rows[0].image[iii])
-        setDataModal(res.data.rows[0].image[iii])
-    })
+        console.log(iii)
+        setDataModal(iii)
 }
 
 
@@ -62,11 +59,28 @@ function gethhh(iii){
             <div className="page-of-estate__main-info">
             <div className="page-of-estate__left">
                 <div className="page-of-estate__left_img">
-                    <img className="page-of-estate__left_img_tag" src={e.image[0]} width="600" alt="estate" />
-                    <div className="page-of-estate__left_img_carousel">
-                    {imageArray.map((imgSrc, index) => (<img src={imgSrc} key={index} className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
+                    <img className="page-of-estate__left_img_tag" src={e.image1} width="600" alt="estate" onClick={() => {
                     setModalActive(true)
-                    gethhh(index)}} />))}
+                    gethhh(e.image1)}}/>
+                    <div className="page-of-estate__left_img_carousel">
+                    {/* {imageArray.map((imgSrc, index) => (<img src={imgSrc} key={index} className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
+                    setModalActive(true)
+                    gethhh(index)}} />))} */}
+                   {e.image2 &&  <img src={e.image2}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
+                    setModalActive(true)
+                    gethhh(e.image2)}}/>}
+                    {e.image3 &&  <img src={e.image3}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
+                    setModalActive(true)
+                    gethhh(e.image3)}}/>}
+                    {e.image4 &&  <img src={e.image4}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
+                    setModalActive(true)
+                    gethhh(e.image4)}}/>}
+                    {e.image5 &&  <img src={e.image5}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
+                    setModalActive(true)
+                    gethhh(e.image5)}}/>}
+                    {e.image6 &&  <img src={e.image5}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
+                    setModalActive(true)
+                    gethhh(e.image6)}}/>}
                                 <ModalEstate active={modalActive} setActive={setModalActive}>
             <div className="page-of-estate__main-info">
                 <img src={dataModal} alt="mmm" width='1000'/>
