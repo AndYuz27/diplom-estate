@@ -62,12 +62,20 @@ background-color: aqua;
     align-items: flex-start;
     
 }
+.form_data{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
 .admin_upload_obj__input{
     width: 320px;
     height: 27px;
     border-radius: 8px;
     font-size: 10pt;
     text-align: left;
+    margin-bottom: 16px;
+    border: 1px solid;
+    padding: 6px;
 }
 .admin_upload_obj__input:hover{
     border: 1px solid;
@@ -80,6 +88,24 @@ background-color: aqua;
     align-items: center;
 }
 
+label{
+    margin: 8px;
+}
+
+.admin_upload_obj__form{
+align-items: center;    
+}
 /* .admin-page{
     min-height: 80vh;
 } */
+
+.field_lr{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    box-shadow: 0 0 14px #000;
+    margin: 64px;
+    padding: 32px;
+}

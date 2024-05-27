@@ -7,6 +7,7 @@ import axios from "axios";
 export default function AdminPage() {
 
     const [data, setData] = React.useState([])
+    const [id_user, setID] = React.useState()
 
 let id = localStorage.getItem('cmp_name')
     React.useEffect(() => {
@@ -15,13 +16,14 @@ let id = localStorage.getItem('cmp_name')
                 .then(res => {
                     console.log(res.data.rows)
                     setData(res.data.rows)
+                    setID(localStorage.setItem('id_u', res.data.rows[0].id_emp))
                 })
                 .catch(err => {
                     console.log(err)
                 })
         }
     }, [ id ]);
-
+// console.log(localStorage.getItem('id_u'))
     let admin_status = localStorage.getItem('isAuthCmp')
     console.log(admin_status)
 
@@ -33,12 +35,12 @@ let id = localStorage.getItem('cmp_name')
 
     }
 
-    function DeAuth(){
+    function DeAuth(){ // Функция выхода из системы
         localStorage.removeItem('isAuthCmp')
         window.location.href=`/`;
     }
 
-if (admin_status === null){
+if (admin_status === null){ // если нет админки, то запрещай доступ
     return <AccessDenied_adminpage/>
 }else{
     return(
@@ -48,6 +50,7 @@ if (admin_status === null){
                 <Link className="admin-page__left_btn"  to="/admin/add-users"> <i class="fa-solid fa-user-plus"></i>Добавление Пользователей</Link>
                 <Link className="admin-page__left_btn"  to="/admin/table"><i class="fa-solid fa-table"></i> Таблица объявлений недвижимости</Link>
                 <Link className="admin-page__left_btn" to="/admin/chat"> <i className="fa-solid fa-message"></i>Чат с клиентами</Link>
+                <Link className="admin-page__left_btn" to="/admin/feedback"> <i className="fa-solid fa-comments"></i>Обратная связь</Link>
             </div>
             {data.map((e) => {
                 return( 

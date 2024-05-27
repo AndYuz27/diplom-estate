@@ -20,6 +20,10 @@ footer {
 
 }
 
+.page-of-estate__main-info_iimg{
+  height: 90%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -174,6 +178,9 @@ background-color: gray;
 }
 .page-of-estate__left_img_tag-thumb{
   margin: 8px 8px 8px 0;
+  width: 144px;
+  height: 96px;
+  object-fit: cover;
 }
 .page-of-estate__right_price{
   padding: 8px;
@@ -183,6 +190,9 @@ background-color: gray;
   box-shadow: 0 0 8px #3f3f3f;
   margin-top: 25px;
   margin-bottom: 25px;
+}
+.page-of-estate__left_img_carousel{
+  width: 640px;
 }
 .page-of-estate__right_empl_info{
   display: flex;
@@ -206,6 +216,9 @@ background-color: gray;
   text-decoration: none;
   color: inherit;
   font-weight: bold;
+}
+.page-of-estate__right{
+  margin-left: 192px;
 }
 .btn-inf{
   margin: 8px;
@@ -261,6 +274,21 @@ label{
 }
 .Auth_input{
   font-size: 16pt;
+  padding: 8px;
+  border: none;
+}
+.Auth_input:hover{
+  background-color: none;
+  border: none;
+}
+.line{
+  width: 256px;
+  height: 1px;
+  border: 1px solid;
+  
+}
+.Auth_label{
+  font-size: 12pt;
 }
 .Auth_submit{
   margin: 5px;

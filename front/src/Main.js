@@ -8,7 +8,7 @@ import AuthEmpl from "./AuthEmpl";
 import CityInfo from "./CityInfo";
 import AdminPage from "./Pages/AdminPage";
 import PageOfEstate from "./Pages/PageOfEstate"
-import CatalogSepType from "./Pages/CatalogSepType";
+import {CatalogSepType} from "./Pages/Catalog";
 import AboutOrg from "./Pages/AboutOrg";
 import AdminTable from "./Pages/AdminTable";
 import UploadObject from "./Pages/UploadObjects";
@@ -17,11 +17,15 @@ import Services from "./Pages/Services";
 import ServicePage from "./Pages/ServicePage";
 import PriceList from "./Pages/PriceList";
 import Chat from "./Pages/Chat";
+import Feedback from "./Pages/Feedback";
+import AddEmpl from "./Pages/AddEmpl";
+import { FeedbackAdminList, FeedbackAdminPageQestion } from "./Pages/Feedback.Admin";
 export default function Main(){
     return(
         <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/feedback" element={<Feedback />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:id" element={<ServicePage />} />
@@ -32,6 +36,10 @@ export default function Main(){
             <Route path="/admin/" element={<AdminPage />} />
             <Route path="/admin/table" element={<AdminTable />} />
             <Route path="/admin/upload" element={<UploadObject />} />
+            <Route path="/admin/chat" element={<Chat />} />
+            <Route path="/admin/add-users" element={<AddEmpl />} />
+            <Route path="/admin/feedback" element={<FeedbackAdminList />} />
+            <Route path="/admin/feedback/:id" element={<FeedbackAdminPageQestion />} />
         <Route path="/about/" element={<AboutOrg />} />
         <Route path="/about/vacancy" element={<Vacancy />} />
         <Route path="/auth/empl" element={<AuthEmpl />} />

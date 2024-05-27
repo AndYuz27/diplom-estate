@@ -38,4 +38,46 @@ table {
     justify-content: center;
     align-items: center;
   }
-  
+  .btn_table{
+    padding: 5px;
+    margin-right: 4px;
+    border: none;
+    border-radius: 8px;
+    /* background-color: lightgreen; */
+    cursor: pointer;
+  }
+  .btn_change{
+    background-color: yellow;
+  }
+  .btn_change:hover{
+    background-color: darkgoldenrod;
+  }
+  .btn_del{
+    background-color: red;
+    color: white;
+  }
+  .btn_del:hover{
+    background-color: brown;
+  }
+  .btn_modal_del{
+    width: 64px;
+    font-size: 18pt;
+  }
+  .btn_cancel_modal{
+    background-color: lightgreen;
+  }
+
+  .btn_modal_del{
+    margin: 24px;
+    border: none;
+    border-radius: 8px;
+    padding: 8px;
+
+  }
+
+  .del_modal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

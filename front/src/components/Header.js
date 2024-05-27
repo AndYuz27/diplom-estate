@@ -52,6 +52,7 @@ let st = localStorage.getItem('isAuthCmp')
             <div className="header-nav">
                 <Link className="header-nav_a" style={style_nav_a} to="/catalog">Каталог недвижимости</Link>
                 <Link className="header-nav_a" style={style_nav_a} to="/about">Об организации</Link>
+                <Link className="header-nav_a" style={style_nav_a} to="/feedback">Обратная связь</Link>
                 {!st && <Link className="header-nav_a" style={style_nav_a} to="/auth/empl">Войти</Link>}
                 {st && <Link  to={`/admin`} className="header-nav_a" >Профиль</Link>}
 
@@ -61,6 +62,7 @@ let st = localStorage.getItem('isAuthCmp')
                 <div className="header-nav_mob_modal" style={{display: modalHdr}}>
                     <Link className="header-nav_a" style={style_nav_a} to="/catalog" onClick={() => setMdl()}>Каталог недвижимости</Link>
                     <Link className="header-nav_a" style={style_nav_a} to="/about" onClick={() => setMdl()}>Об организации</Link>
+                    <Link className="header-nav_a" style={style_nav_a} to="/feedback">Обратная связь</Link>
                     {!st && <Link className="header-nav_a" style={style_nav_a} to="/auth/empl">Войти</Link>}
                 {st && <Link  to={`/admin`} className="header-nav_a" >Профиль</Link>}
                 </div>

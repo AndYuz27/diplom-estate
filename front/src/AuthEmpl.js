@@ -48,12 +48,19 @@ return(
     <h2>авторизация для сотрудников</h2>
     <form className="Auth_form" onSubmit={handleSubComp}>
         <div className="Auth_in">
-          <label htmlFor='email'>Логин</label>
+          <label className='Auth_label'>Логин</label>
+          <div className="input_aaa">
           <input className="Auth_input" type='text' id='email' value={email} onChange={(e) => setEmail(e.target.value)} required="required"/>
+          <div className="line"></div>
+          </div>
         </div>
         <div className="Auth_in">
-          <label className="Auth_input" htmlFor='password'>Пароль</label>
+          <label className="Auth_label">Пароль</label>
+          <div className="input_aaa">
+
           <input className="Auth_input" type='password' id='password' value={password} onChange={(e) => setPassword(e.target.value)} required="required"/>
+          <div className="line"></div>
+        </div>
         </div>
         <button className="Auth_submit">Войти</button>
       </form>

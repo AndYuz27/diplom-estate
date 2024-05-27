@@ -1,0 +1,19 @@
+.inp_aaa{
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 8px;
+    font-size: 12pt;
+}
+.inp_btn{
+    background-color: limegreen;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.inp_btn:hover{
+background-color: green;
+}

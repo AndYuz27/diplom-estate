@@ -12,17 +12,18 @@ export default function PageOfEstate(){
     const [dataProfile, setDataProfile] = useState([])
     const [dataModal, setDataModal] = useState('')
     const [idp, setIdp] = useState('')
+    const [img_raw, setImgRaw] = useState('')
+    const [img_raw1, setImgRaw1] = useState('')
     const [modalActive, setModalActive] = useState(false)
-
+console.log(img_raw)
 useEffect(() => {
     if ( id ) {
         axios.get(`http://localhost:8080/api/object/${id}`)
             .then(res => {
                 console.log(res.data.rows)
                 setData(res.data.rows)
-                setimageArray(res.data.rows[0].image)
-                console.log(res.data.rows[0].image)
-                setIdp(res.data.rows[0].who_upload)
+                // setIdp(res.data.rows[0].who_upload)
+                // setImgRaw(res.data.rows[0].img_raw)
             })
             .catch(err => {
                 console.log(err)
@@ -31,17 +32,33 @@ useEffect(() => {
 }, [ id ]);
 
 useEffect(() => {
-    if (idp){
-        axios.get(`http://localhost:8080/api/user/${idp}`)
-        .then(res => {
-            console.log(res.data.rows)
-            setDataProfile(res.data.rows)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+    if ( id ) {
+        axios.get(`http://localhost:8080/api/object_img/${id}`)
+            .then(res => {
+                console.log(res.data.rows)
+                setimageArray(res.data.rows)
+                // setIdp(res.data.rows[0].who_upload)
+                // setImgRaw(res.data.rows[0].img_raw)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
-},[ idp ])
+}, [ id ]);
+
+// useEffect(() => {
+//     if (idp){
+//         axios.get(`http://localhost:8080/api/user/${idp}`)
+//         .then(res => {
+//             console.log(res.data.rows)
+//             setDataProfile(res.data.rows)
+//         })
+//         .catch(err => {
+//             console.log(err)
+//         })
+//     }
+// },[ idp ])
+
 
 
 function gethhh(iii){
@@ -58,8 +75,10 @@ function gethhh(iii){
              {data.map((e) => {return <div className="parse" key={e.id}>
             <div className="page-of-estate__main-info">
             <div className="page-of-estate__left">
-                <div className="page-of-estate__left_img">
-                    <img className="page-of-estate__left_img_tag" src={e.image1} width="600" alt="estate" onClick={() => {
+               {imageArray.map((e)=>{
+                return(
+                    <div className="page-of-estate__left_img">
+                    <img className="page-of-estate__left_img_tag" src={e.image1} width="640" alt="estate" onClick={() => {
                     setModalActive(true)
                     gethhh(e.image1)}}/>
                     <div className="page-of-estate__left_img_carousel">
@@ -78,16 +97,19 @@ function gethhh(iii){
                     {e.image5 &&  <img src={e.image5}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
                     setModalActive(true)
                     gethhh(e.image5)}}/>}
-                    {e.image6 &&  <img src={e.image5}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
+                    {e.image6 &&  <img src={e.image6}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
                     setModalActive(true)
                     gethhh(e.image6)}}/>}
+
                                 <ModalEstate active={modalActive} setActive={setModalActive}>
             <div className="page-of-estate__main-info">
-                <img src={dataModal} alt="mmm" width='1000'/>
+                <img className="page-of-estate__main-info_iimg" src={dataModal} alt="mmm" width='640'/>
             </div>
             </ModalEstate>
                     </div>
                 </div>
+                )
+               } )} 
                 <div className="page-of-estate__desc" src="" alt="estate" >
                     <h3 className="page-of-estate__desc_h3">Описание</h3>
                     <p className="page-of-estate__desc_p">{e.description}</p>
@@ -100,7 +122,7 @@ function gethhh(iii){
                 <p className="page-of-estate__right_price">{e.price} {e.currency}</p>
                 <p className="page-of-estate__right_location">{e.address}</p>
                 <p className="page-of-estate__right_floor">{e.cnt_floors} этаж  {e.cnt_rooms} комн.</p>
-                {dataProfile.map((e) => {return  <div className="page-of-estate__right_empl_info">
+                <div className="page-of-estate__right_empl_info">
                     <h2>Объект опубликовал(-а)</h2>
                     <div className="page-of-estate__right_empl_info_bage">
                     <Link className="page-of-estate__right_empl_info_bage_link" to="/users/1">{e.name} {e.surname}</Link>
@@ -108,7 +130,7 @@ function gethhh(iii){
                     </div>
                     <button className="page-of-estate__right_empl_info_to-chat btn-inf">Написать сотруднику/покупателю</button>
                     <button className="page-of-estate__right_empl_info_to-dial btn-inf">Позвонить сотруднику/покупателю</button>
-                </div>})}
+                </div>
 
             </div>
             </div>

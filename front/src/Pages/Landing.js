@@ -44,7 +44,7 @@ export default function Landing(){
                 <h2 className="fgg">Добро пожаловать на сайт агентсва недвижимости "Стромынский тракт"</h2>
                 <div className="btns_img">
                 <button className="btn_land" onClick={() => window.location.href = "/catalog"}>Найти недвижимость</button>
-                <button className="btn_land" onClick={() => alert('Under Construction')}>Связаться с сотрудниками</button>
+                <button className="btn_land" onClick={() => window.location.href = "/chat"}>Связаться с сотрудниками</button>
 
                 </div>
             </div>
@@ -62,7 +62,7 @@ export default function Landing(){
                 <div className="choose_type_items">
                     <ChooseItem icon={house_img} name_icon="Частные дома" link_icon="/catalog/sep/Загородный дом"/>
                     <ChooseItem icon={aprt_img} name_icon="Квартиры" link_icon="/catalog/sep/квартира"/>
-                    <ChooseItem icon={sumhouse_img} name_icon="Дачи" link_icon="/catalog/sep/Дачи"/>
+                    <ChooseItem icon={'https://csq.com/wp-content/uploads/2010/01/566828_thumbnail.jpg'} name_icon="услуги" link_icon="/services"/>
                     <ChooseItem icon={prlst_img} name_icon="Прайс-лист услуг" link_icon="/services-price-List"/>
                 </div>
             </div>
@@ -71,8 +71,7 @@ export default function Landing(){
                 <div className="advantage_list">
                     <Advantage name='Внесение аванса онлайн' img="https://6422570.ru/media/uploads/2018/12/05/thumbnail-f5d80777051662bb589d265acd227538.jpeg" desr="На нашем сайте вы можете внести аванс онлайн"/>
                     <Advantage name='поиск аналогичных объектов с той же планировкой' img={same_planing} desr="поиск аналогичных объектов с той же планировкой"/>
-                    <Advantage name='Внесение аванса онлайн' img="https://6422570.ru/media/uploads/2018/12/05/thumbnail-f5d80777051662bb589d265acd227538.jpeg" desr="На нашем сайте вы можете внести аванс онлайн"/>
-                    <Advantage name='Внесение аванса онлайн' img="https://6422570.ru/media/uploads/2018/12/05/thumbnail-f5d80777051662bb589d265acd227538.jpeg" desr="На нашем сайте вы можете внести аванс онлайн"/>
+                    <Advantage name='Маркетплейс в сфере недвижимости' img="https://digitalowl.top/wp-content/uploads/2020/12/seo_sovety_ecommerce-2048x1450.jpg" desr="На нашем сайте вы можете найти разлиные услуги по данный сфере"/>
                 </div>
             </div>
             <div className="last_ad_estate">

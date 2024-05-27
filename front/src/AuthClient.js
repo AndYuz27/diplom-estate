@@ -2,15 +2,21 @@ import "./App.css"
 
 export default function AuthClient(){
     return(
-        <div className="Auth">
-            <form className="auth-form">
-                <input type="email" name="email" placeholder="эл. почта"></input>
-                <br></br>
-                <input type="password" name="password" placeholder="пароль"></input>
-            <br></br>
-                            <button type="submit">Submit form</button>
-            </form>
-            Если ты сотрудник агентства, то <button>ВАМ СЮДА</button>
+<div className="Auth">
+    <h2>авторизация для сотрудников</h2>
+    <form className="Auth_form" >
+        <div className="Auth_in">
+          <label htmlFor='email'>Логин</label>
+          <input className="Auth_input" type='text' id='email' required="required"/>
         </div>
+        <div className="Auth_in">
+          <label className="Auth_input" htmlFor='password'>Пароль</label>
+          <input className="Auth_input" type='password' id='password' required="required"/>
+        </div>
+        <button className="Auth_submit">Войти</button>
+      </form>
+      Если ты клиент, то <button className="Auth_submit">Войдите как сотрудник</button>
+
+</div>    
     )
 }

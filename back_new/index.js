@@ -1,6 +1,7 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
 const path = require("path");
+const bodyParser = require('body-parser')
 var cors = require('cors')
 var util = require('util');
 
@@ -30,6 +31,7 @@ const PORT = process.env.PORT || 8080 // Порт Сервера
 console.log('This is back-end server!')
 const app = express()
 app.use(cors())
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000 }))
 // app.use(upload())
 app.get('/' ,(req, res) => {
     res.send("This is back-end server! There's nothing to do here))")
@@ -37,7 +39,7 @@ app.get('/' ,(req, res) => {
 })
 
 
-app.use(express.json())
+app.use(express.json({limit: '25mb'}))
 
 app.post('/api/upload', upload.single('file'), (req, res) => {
   res.send(req.file.originalname)

@@ -23,6 +23,12 @@
     background-color: gainsboro;
     
 }
+
+.catalog_list_item-img-a{
+    width: 320px;
+    height: 240px;
+    object-fit: cover;
+}
 .catalog_list_item:active{
     background-color: rgb(150, 150, 150);
     
@@ -38,7 +44,8 @@
     align-items: center;
 }
 .catalog_list_item-short-info{
-    margin-left: 27px;
+    width: 388px;
+    margin-left: 64px;
 }
 /* .catalog__loading{
     display: flex;

@@ -1,2 +1,2 @@
 @echo off
-psql -U postgres -d postgres -f db.sql
+psql -U postgres -d postgres -f aaa.sql
