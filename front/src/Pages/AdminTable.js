@@ -61,7 +61,7 @@ export default function AdminTable(){
     <th>Тип недвижимости</th>
     <th>Адрес</th>
     <th>Цена</th>
-    <th>Действия с данными</th>
+    <th className='action_column'>Действия с данными</th>
   </tr>
 {filterTable.map((e) => {
     return(
@@ -70,7 +70,7 @@ export default function AdminTable(){
         <td onClick={()=> window.location.href = `/catalog/${e.id}`}>{e.type_object}</td>
         <td onClick={()=> window.location.href = `/catalog/${e.id}`}>{e.address}</td>
         <td onClick={()=> window.location.href = `/catalog/${e.id}`}>{e.price} {e.currency}</td>
-        <td><button className='btn_table btn_del' onClick={() => {
+        <td className='action_column'><button className='btn_table btn_del' onClick={() => {
                             setModalActive(true)
                             setid_estate(e.id)
                             setModalHdr()}}>Удалить</button> <button className='btn_table btn_change' onClick={ () => delObject()}>Изменить</button></td>

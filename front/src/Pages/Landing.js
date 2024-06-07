@@ -10,6 +10,9 @@ import prlst_img from "../assets/price_list.png"
 import ChooseItem from "../components/ChooseItem"
 import Advantage from "../components/Advantage"
 import same_planing from '../assets/same_planing.jpg'
+import rent from '../assets/rent_icon.png'
+import buy from '../assets/buy.png'
+import marketplace from '../assets/marketplace.jpg'
 import axios from "axios"
 
 
@@ -51,17 +54,17 @@ export default function Landing(){
             <div className="choose_type">
                 <h2>Выберите тип недвижимости</h2>
                 <div className="choose_type_items">
-                    <ChooseItem icon={house_img} name_icon="Частные дома" link_icon="/catalog/sep/Загородный дом"/>
-                    <ChooseItem icon={aprt_img} name_icon="Квартиры" link_icon="/catalog/sep/квартира"/>
-                    <ChooseItem icon={sumhouse_img} name_icon="Дачи" link_icon="/catalog/sep/Дачи"/>
-                    <ChooseItem icon={field_img} name_icon="Земельные Участки" link_icon="/catalog/sep/Земельные участки"/>
+                    <ChooseItem icon={house_img} name_icon="Частные дома" link_icon="/catalog/sep/Дом"/>
+                    <ChooseItem icon={aprt_img} name_icon="Квартиры" link_icon="/catalog/sep/Квартира"/>
+                    <ChooseItem icon={sumhouse_img} name_icon="Дачи" link_icon="/catalog/sep/Дача"/>
+                    <ChooseItem icon={field_img} name_icon="Земельные Участки" link_icon="/catalog/sep/Участок земли"/>
                 </div>
             </div>
             <div className="choose_type">
                 <h2>Услуги Агентства Недвижимости</h2>
                 <div className="choose_type_items">
                     <ChooseItem icon={house_img} name_icon="Частные дома" link_icon="/catalog/sep/Загородный дом"/>
-                    <ChooseItem icon={aprt_img} name_icon="Квартиры" link_icon="/catalog/sep/квартира"/>
+                    <ChooseItem icon={"https://static.tildacdn.com/tild3261-3865-4838-b363-376432356461/__.svg"} name_icon="Расчёт ипотеки" link_icon="/ipoteka"/>
                     <ChooseItem icon={'https://csq.com/wp-content/uploads/2010/01/566828_thumbnail.jpg'} name_icon="услуги" link_icon="/services"/>
                     <ChooseItem icon={prlst_img} name_icon="Прайс-лист услуг" link_icon="/services-price-List"/>
                 </div>
@@ -71,7 +74,14 @@ export default function Landing(){
                 <div className="advantage_list">
                     <Advantage name='Внесение аванса онлайн' img="https://6422570.ru/media/uploads/2018/12/05/thumbnail-f5d80777051662bb589d265acd227538.jpeg" desr="На нашем сайте вы можете внести аванс онлайн"/>
                     <Advantage name='поиск аналогичных объектов с той же планировкой' img={same_planing} desr="поиск аналогичных объектов с той же планировкой"/>
-                    <Advantage name='Маркетплейс в сфере недвижимости' img="https://digitalowl.top/wp-content/uploads/2020/12/seo_sovety_ecommerce-2048x1450.jpg" desr="На нашем сайте вы можете найти разлиные услуги по данный сфере"/>
+                    <Advantage name='Маркетплейс в сфере недвижимости' img={marketplace} desr="На нашем сайте вы можете найти разлиные услуги по данный сфере"/>
+                </div>
+            </div>
+            <div className="choose_type">
+                <h2>Как вы хотите приобрети недвижимость?</h2>
+                <div className="choose_type_items_aa">
+                    <ChooseItem icon={buy} name_icon="Купить" link_icon="/catalog/sep/Загородный дом"/>
+                    <ChooseItem icon={rent} name_icon="Снять в аренду" link_icon="/catalog/sep/квартира"/>
                 </div>
             </div>
             <div className="last_ad_estate">

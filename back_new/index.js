@@ -21,6 +21,7 @@ const upload = multer({ storage: storage })
 
 var userRouter = require('./routers/users.router');
 var objectRouter = require('./routers/estate.router');
+var chatRouter = require('./routers/chat.router');
 // var  user  =  require("./routers/user.router");
 
 let now = new Date();
@@ -47,6 +48,7 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
 
 app.use('/api', userRouter)
 app.use('/api', objectRouter)
+app.use('/api', chatRouter)
 // app.use("/api/user",  user); 
 
 

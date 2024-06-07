@@ -13,7 +13,11 @@
 }
 
 .admin-page{
-    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 64px;
 }
 .admin-page__right{
     display: flex;
@@ -21,6 +25,9 @@
     justify-content: center;
     align-items: flex-start;
     
+}
+.admin-page__left_a{
+    margin-right: 64px;
 }
 .admin-page__right_position{
 margin: 4px;
@@ -41,6 +48,18 @@ margin: 4px;
 .admin-page__right_menu_btn:hover{
 background-color: aqua;
 
+}
+
+.admin_page_info_objects{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.admin_page_info{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
 }
 .fa-solid{
     margin-right: 8px;
@@ -63,9 +82,8 @@ background-color: aqua;
     
 }
 .form_data{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
 .admin_upload_obj__input{
     width: 320px;

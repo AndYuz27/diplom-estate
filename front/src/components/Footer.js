@@ -1,16 +1,13 @@
 import '../App.css'
 import { Link } from "react-router-dom"
+import './comps.css'
+
+import '../App.css'
+
 export default function Footer() {
 
     let style_hdr = {
-            backgroundColor: "lightblue",
-            width: "100%",
-            height: "64px",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginTop: "50px"
+
 
         
 
@@ -37,9 +34,17 @@ export default function Footer() {
 
     return(
         <div className="footer" style={style_hdr}>
-            <Link className="footer-logo_a" style={style_nav_a_logo} to="/">2024 CREATED BY AndYuz27</Link>
             <div className="footer-nav">
-                <p>1994-2024 ООО Стромынский тракт</p>
+                <div className='footer-nav_links'>
+                    <Link to='/' className='footer-nav_link'>Номера телефонов менеджеров</Link>
+                    <Link to='/' className='footer-nav_link'>Вакансии</Link>
+                    <Link to='/news' className='footer-nav_link'>Новости</Link>
+                    <Link to='/' className='footer-nav_link'>Юридическая Информация</Link>
+                </div>
+                <b>Сайт создан Юзловым (AndYuz27) Андреем</b>
+            </div> 
+            <div className="footer-nav">
+                <p>1993 - 2024 ООО Стромынский тракт</p>
             </div>
         </div>
     )

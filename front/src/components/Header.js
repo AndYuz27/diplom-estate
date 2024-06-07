@@ -2,16 +2,11 @@ import { Link } from "react-router-dom"
 import logo_img from '../assets/logo_long.png'
 import '../App.css'
 import { useState } from "react"
+import {QRCodeSVG} from 'qrcode.react'
 export default function Header() {
 
     let style_hdr = {
-            backgroundColor: "lightblue",
-            width: "100%",
-            height: "64px",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            alignItems: "center",
+
 
         
 
@@ -47,7 +42,9 @@ function setMdl(e){
 }//
 let st = localStorage.getItem('isAuthCmp')
     return(
-        <div className="header" style={style_hdr}>
+        <div className="wrp_hdr">
+            <QRCodeSVG width={64} height={64} className="wrp_hdr_qr" value={window.location.href} />
+                    <div className="header" style={style_hdr}>
             <Link className="header-logo_a" style={style_nav_a_logo} to="/"><img  src={logo_img} alt="Стромынский тракт" height="64px"/></Link>
             <div className="header-nav">
                 <Link className="header-nav_a" style={style_nav_a} to="/catalog">Каталог недвижимости</Link>
@@ -68,6 +65,8 @@ let st = localStorage.getItem('isAuthCmp')
                 </div>
                 
             </div>
+            </div>
         </div>
+
     )
 }

@@ -15,6 +15,9 @@ export default function Catalog() {
     const [modalData, setModalData] = useState([])
     const [modalDataImg, setModalDataImg] = useState([])
     const [esteList, seteEsteList] = useState([])
+    const [text, seText] = useState('')
+
+
 
     useEffect(() => {
             axios.get(`http://localhost:8080/api/object`)
@@ -25,6 +28,8 @@ export default function Catalog() {
                 })
                 .catch(err => {
                     console.log(err)
+                    seText('Данные не загрузились из-за ошибки на сервере. Повторите попытку позже или напишите на почту, support@stromtrakt.ru');
+
                 })
         
     }, []);
@@ -53,7 +58,12 @@ export default function Catalog() {
     if (!isLoad){
         return(
             <div className="catalog__loading">
-                    <h2>Загрузка данных</h2>
+                    <div className="catalog__loading_element">
+                    {!text &&   <h2 className="catalog__loading_element_title">Загрузка данных</h2>}
+                    {text &&   <h2 className="catalog__loading_element_title">{text}</h2>}
+                    {!text &&     <img src="https://usagif.com/wp-content/uploads/loading-96.gif" alt="Loading" width={160}/>}
+                        {/* <h2>{text}</h2> */}
+                    </div>
             </div>
         )
     }else{
@@ -176,6 +186,11 @@ export default function Catalog() {
         </div>
     )
                 }
+}
+
+//Каталог арендуемых объектов
+export function CatalogRent(){
+    
 }
 
 

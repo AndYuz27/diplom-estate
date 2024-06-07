@@ -81,3 +81,13 @@ table {
     justify-content: center;
     align-items: center;
   }
+
+  @media print {
+  
+  .action_column{
+    display: none;
+  }
+  .admin_table__serach_holder{
+    display: none;
+  }
+  }

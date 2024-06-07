@@ -10,16 +10,24 @@ const db = require('../db');
 
 // router.post('/object', ObjectController.createUser)
 router.get('/object', cors(), ObjectController.getObjects)
+router.get('/object_emp/:id', cors(), ObjectController.getOjectByEmpl)
 router.post('/object', cors(), ObjectController.setObject)
 router.get('/service', cors(), ObjectController.getObjectsServe)
 router.get('/service/:id', cors(), ObjectController.getObjectServe)
 router.get('/object/:id', cors(), ObjectController.getObject)
 router.get('/object_img/:id', cors(), ObjectController.getObjectImg)
+router.get('/object_cl/:id', cors(), ObjectController.getObjsClient)
 router.get('/object/sep/:id', cors(), ObjectController.getSeparateObject)
 router.get('/fback', cors(), ObjectController.getFeedback)
+router.get('/types_est', cors(), ObjectController.getTypesEstate)
+
 router.get('/fback/:id', cors(), ObjectController.getFeedbackSingle)
 router.post('/fback', cors(), ObjectController.sendFback)
+
 router.delete('/object/:id', ObjectController.delObject)
+
+router.get('/news/', ObjectController.getNews)
+router.get('/news/:id', ObjectController.getNewsById)
 router.delete('/fback/:id', ObjectController.delFeedback)
 
 
@@ -65,7 +73,7 @@ router.get('/img_estate1/:id', async (req, res) => {
     res.send(result.rows[0].image1)
   }catch(err){
     console.log('Ошибка на сервере КОД:', err)
-    res.status(404).send('Блять, где файл ёпта!?')
+    res.status(404).send('Файла нет')
 
   }
 

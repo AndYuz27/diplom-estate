@@ -1,5 +1,7 @@
 import error_pic from "./assets/404.jpg"
 
+import { YMaps, Map, RoutePanel, Placemark } from '@pbe/react-yandex-maps';
+import React, {useState, useEffect} from 'react'
 
 
 
@@ -19,3 +21,5 @@ export default function NotFound(){
         </div>
     )
 }
+
+

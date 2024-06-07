@@ -4,27 +4,42 @@ import axios from "axios";
 import "../App.css"
 import { useEffect, useState } from "react";
 import ModalEstate from "../components/ModalEstate";
+import VideoPlug from "../components/VideoPlug";
+import { BuyComp } from "../components/BuyComp";
+import { YMaps, Map,Placemark} from '@pbe/react-yandex-maps';
+import ProgressBar from "../components/Progressbar";
+
+
 
 export default function PageOfEstate(){
     const {id} = useParams()
     const [data, setData] = useState([])
+    const [coordLat, setCrdLt] = useState(0)
+    const [coordLog, setCrdLg] = useState(0)
     const [imageArray, setimageArray] = useState([])
-    const [dataProfile, setDataProfile] = useState([])
     const [dataModal, setDataModal] = useState('')
-    const [idp, setIdp] = useState('')
-    const [img_raw, setImgRaw] = useState('')
-    const [img_raw1, setImgRaw1] = useState('')
+    const [catv, setCATV] = useState('')
+    const [security, setSecurity] = useState('')
+
     const [modalActive, setModalActive] = useState(false)
-console.log(img_raw)
+    const [data_phone, setData_phone] = useState('')
+    const [IDEst, setIDEst] = useState(0)
 useEffect(() => {
     if ( id ) {
         axios.get(`http://localhost:8080/api/object/${id}`)
             .then(res => {
                 console.log(res.data.rows)
+                // console.log(Number((res.data.rows[0].coords).slice(0, 9)))
                 setData(res.data.rows)
-                // setIdp(res.data.rows[0].who_upload)
-                // setImgRaw(res.data.rows[0].img_raw)
+                setCATV(res.data.rows[0].catv_avail)
+                setSecurity(res.data.rows[0].security_avail)
+                setCrdLt(Number((res.data.rows[0].coords).slice(0, 9)))
+                setCrdLg(Number((res.data.rows[0].coords).slice(10, 19)))
+
+
             })
+
+            /*Number("1000") */
             .catch(err => {
                 console.log(err)
             })
@@ -37,27 +52,45 @@ useEffect(() => {
             .then(res => {
                 console.log(res.data.rows)
                 setimageArray(res.data.rows)
-                // setIdp(res.data.rows[0].who_upload)
-                // setImgRaw(res.data.rows[0].img_raw)
+                setIDEst(res.data.rows[0].id)
+
             })
             .catch(err => {
                 console.log(err)
             })
     }
 }, [ id ]);
+useEffect(() => {
+    if ( IDEst ) {
+        axios.get(`http://localhost:8080/api/cnt/${IDEst}`)
+            .then(res => {
+                console.log(res.data.rows)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}, [ IDEst ]);
 
-// useEffect(() => {
-//     if (idp){
-//         axios.get(`http://localhost:8080/api/user/${idp}`)
-//         .then(res => {
-//             console.log(res.data.rows)
-//             setDataProfile(res.data.rows)
-//         })
-//         .catch(err => {
-//             console.log(err)
-//         })
-//     }
-// },[ idp ])
+console.log('камеры',catv)
+console.log('охрана' ,security)
+
+
+let ddd;
+let ddf;
+if(security){
+     ddd = 50
+}else{
+    ddd = 0
+}
+if(catv){
+    ddf = 50
+}else{
+    ddf = 0
+}
+// console.log('ff', ddf)
+// console.log('dd', ddd)
+
 
 
 
@@ -78,13 +111,10 @@ function gethhh(iii){
                {imageArray.map((e)=>{
                 return(
                     <div className="page-of-estate__left_img">
-                    <img className="page-of-estate__left_img_tag" src={e.image1} width="640" alt="estate" onClick={() => {
+                    <img className="page-of-estate__left_img_tag" src={e.image1} alt="estate" onClick={() => {
                     setModalActive(true)
                     gethhh(e.image1)}}/>
                     <div className="page-of-estate__left_img_carousel">
-                    {/* {imageArray.map((imgSrc, index) => (<img src={imgSrc} key={index} className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
-                    setModalActive(true)
-                    gethhh(index)}} />))} */}
                    {e.image2 &&  <img src={e.image2}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
                     setModalActive(true)
                     gethhh(e.image2)}}/>}
@@ -100,7 +130,6 @@ function gethhh(iii){
                     {e.image6 &&  <img src={e.image6}  className="page-of-estate__left_img_tag-thumb" width='144' alt="estate" onClick={() => {
                     setModalActive(true)
                     gethhh(e.image6)}}/>}
-
                                 <ModalEstate active={modalActive} setActive={setModalActive}>
             <div className="page-of-estate__main-info">
                 <img className="page-of-estate__main-info_iimg" src={dataModal} alt="mmm" width='640'/>
@@ -129,7 +158,8 @@ function gethhh(iii){
                         <img  className="page-of-estate__right_empl_info_bage_image" src={e.image_profile} alt="user"/>
                     </div>
                     <button className="page-of-estate__right_empl_info_to-chat btn-inf">Написать сотруднику/покупателю</button>
-                    <button className="page-of-estate__right_empl_info_to-dial btn-inf">Позвонить сотруднику/покупателю</button>
+                    <button className="page-of-estate__right_empl_info_to-dial btn-inf" onClick={() => setData_phone('89991224545')}>Позвонить сотруднику/покупателю</button>
+                    <p>{data_phone}</p>
                 </div>
 
             </div>
@@ -145,15 +175,35 @@ function gethhh(iii){
                     <p className="page-of-estate__detail_info__tech_info">Наличие интернета: да</p>
                     <p className="page-of-estate__detail_info__tech_info">Наличие каб. ТВ: {e.CATV_avail}</p>
                     <p className="page-of-estate__detail_info__tech_info">Возможность установки сплит системы/спут. тарекли: требуется разрешение от ЖКХ</p>
+                    <ProgressBar bgcolor={"lime"} completed={ddd + ddf} />
+
+                </div>
+                <div className="page-of-estate__detail_info">
+                {e.type_videohost && <h2>Видео</h2>}
+                    {e.type_videohost && <VideoPlug type_vidhost={e.type_videohost} link={e.link_videohost} w={512} h={360}/>}
+
+                </div>
+                <div className="page-of-estate__detail_info">
+              {e.coords &&
+              <YMaps>
+              <div>
+                My awesome application with maps!
+                <Map width={512} height={360} defaultState={{ center: [coordLog, coordLat], zoom: 18 }} >
+                <Placemark geometry={[coordLog, coordLat]} />
+          
+                  </Map>
+              </div>
+            </YMaps>
+              }  
                 </div>
                 <div className="page-of-estate__detail_info__build_info">
                     <h3 className="page-of-estate__detail_info__build_info">информаиця о многоквартирном доме</h3>
                     <p className="page-of-estate__detail_info__build_info">Дом серии: {e.type_buildlng}</p>
                     <p className="page-of-estate__detail_info__build_info">Дата постройки: 1982</p>
                     <p className="page-of-estate__detail_info__build_info">Место для охраны/консъержи: </p>
-                    <p className="page-of-estate__detail_info__build_info">кол-вл этажей: 16</p>
-                    <p className="page-of-estate__detail_info__build_info">Наличие лифта: да</p>
-                    <p className="page-of-estate__detail_info__build_info">Наличие г.п. лифта: да</p>
+                    <p className="page-of-estate__detail_info__build_info">Этаж квартиры: {e.cnt_floors}</p>
+                    <p className="page-of-estate__detail_info__build_info">Наличие лифта: {e.elevator_norm && <p>Есть</p>}</p>
+                    <p className="page-of-estate__detail_info__build_info">Наличие г.п. лифта: {e.elevator_large && <p>Есть</p>}</p>
                     <p className="page-of-estate__detail_info__build_info">Наличие газопровода: нет</p>
                     <p className="page-of-estate__detail_info__build_info">Площадь парковки: 202.50</p>
                     <p className="page-of-estate__detail_info__build_info">Мусоропровод: возле лифтовой секции</p>
@@ -164,9 +214,12 @@ function gethhh(iii){
 
 
                 </div>
+                <div className="page-of-estate__detail_info__build_info">
+                    
+                </div>
             </div>
             </div>})}
-
+<BuyComp/>
         </div>
     )
     }
