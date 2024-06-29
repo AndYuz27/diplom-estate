@@ -42,7 +42,7 @@ router.get('/img/:id', async (req, res) => {
     res.send(result.rows[0].image)
   }catch(err){
     console.log('Ошибка на сервере КОД:', err)
-    res.status(404).send('Блять, где файл ёпта!?')
+    res.status(404).send('Not Found!')
 
   }
 
@@ -57,7 +57,7 @@ router.get('/img_n/:id', async (req, res) => {
     res.send(result.rows[0].image)
   }catch(err){
     console.log('Ошибка на сервере КОД:', err)
-    res.status(404).send('Блять, где файл ёпта!?')
+    res.status(404).send('Not Found!')
 
   }
 
@@ -73,7 +73,7 @@ router.get('/img_estate1/:id', async (req, res) => {
     res.send(result.rows[0].image1)
   }catch(err){
     console.log('Ошибка на сервере КОД:', err)
-    res.status(404).send('Файла нет')
+    res.status(404).send('Not Found!')
 
   }
 
