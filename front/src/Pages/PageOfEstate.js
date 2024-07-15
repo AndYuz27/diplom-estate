@@ -2,6 +2,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "../App.css"
+import "../catalog_style.css"
 import { useEffect, useState } from "react";
 import ModalEstate from "../components/ModalEstate";
 import VideoPlug from "../components/VideoPlug";
@@ -20,10 +21,16 @@ export default function PageOfEstate(){
     const [dataModal, setDataModal] = useState('')
     const [catv, setCATV] = useState('')
     const [security, setSecurity] = useState('')
+    const [ralrm, setFirealarm] = useState('')
+    const [intcom, setIntercom] = useState('')
+    const [rrr, setTBROOm] = useState('')
+    const [estyy, setestli] = useState([])
 
     const [modalActive, setModalActive] = useState(false)
     const [data_phone, setData_phone] = useState('')
     const [IDEst, setIDEst] = useState(0)
+    const [text, seText] = useState('')
+
 useEffect(() => {
     if ( id ) {
         axios.get(`http://localhost:8080/api/object/${id}`)
@@ -33,6 +40,9 @@ useEffect(() => {
                 setData(res.data.rows)
                 setCATV(res.data.rows[0].catv_avail)
                 setSecurity(res.data.rows[0].security_avail)
+                setIntercom(res.data.rows[0].intercom_avail)
+                setFirealarm(res.data.rows[0].firealarm)
+                setTBROOm(res.data.rows[0].typebuild_room)
                 setCrdLt(Number((res.data.rows[0].coords).slice(0, 9)))
                 setCrdLg(Number((res.data.rows[0].coords).slice(10, 19)))
 
@@ -42,6 +52,8 @@ useEffect(() => {
             /*Number("1000") */
             .catch(err => {
                 console.log(err)
+                seText('Данные не загрузились из-за ошибки на сервере. Повторите попытку позже или напишите на почту, support@stromtrakt.ru');
+
             })
     }
 }, [ id ]);
@@ -61,8 +73,21 @@ useEffect(() => {
     }
 }, [ id ]);
 useEffect(() => {
-    if ( IDEst ) {
-        axios.get(`http://localhost:8080/api/cnt/${IDEst}`)
+    if ( rrr ) {
+        axios.get(`http://localhost:8080/api/object_aprtsim/${rrr}`)
+            .then(res => {
+                console.log(res.data.rows)
+                setestli(res.data.rows)
+
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+}, [ rrr ]);
+useEffect(() => {
+    if ( id ) {
+        axios.get(`http://localhost:8080/api/cnt/${id}`)
             .then(res => {
                 console.log(res.data.rows)
             })
@@ -70,7 +95,7 @@ useEffect(() => {
                 console.log(err)
             })
     }
-}, [ IDEst ]);
+}, [ id ]);
 
 console.log('камеры',catv)
 console.log('охрана' ,security)
@@ -78,15 +103,27 @@ console.log('охрана' ,security)
 
 let ddd;
 let ddf;
+let dda;
+let ddy;
 if(security){
-     ddd = 50
+     ddd = 25
 }else{
     ddd = 0
 }
 if(catv){
-    ddf = 50
+    ddf = 25
 }else{
     ddf = 0
+}
+if(intcom){
+    dda = 25
+}else{
+    dda = 0
+}
+if(ralrm){
+    ddy = 25
+}else{
+    ddy = 0
 }
 // console.log('ff', ddf)
 // console.log('dd', ddd)
@@ -101,7 +138,16 @@ function gethhh(iii){
 
 
     if(data.length === 0) {
-        return<h2>Данные об объекте еще не занесены или не существуют</h2>
+        return(
+            <div className="catalog__loading">
+                    <div className="catalog__loading_element">
+                    {!text &&   <h2 className="catalog__loading_element_title">Загрузка данных</h2>}
+                    {text &&   <h2 className="catalog__loading_element_title">{text}</h2>}
+                    {!text &&     <img src="https://usagif.com/wp-content/uploads/loading-96.gif" alt="Loading" width={160}/>}
+                        {/* <h2>{text}</h2> */}
+                    </div>
+            </div>
+        )
     }else{
     return(
         <div className="page-of-estate">
@@ -148,13 +194,17 @@ function gethhh(iii){
             <div className="page-of-estate__right">
                 <h3 className="page-of-estate__right_h3">{e.name_object}</h3>
                 <h4 className="page-of-estate__right_h4">Краткое описание:</h4>
-                <p className="page-of-estate__right_price">{e.price} {e.currency}</p>
-                <p className="page-of-estate__right_location">{e.address}</p>
+                <p className="page-of-estate__right_price">{e.price} руб.</p>
+                <p className="page-of-estate__right_location"><b>Вид сделки: </b>{(e.type_buy===1) ? <span>Покупка</span>: (e.type_buy===2) ? <span>Аренда</span> : <span>n/a</span>}</p>
+
+                <p className="page-of-estate__right_location"><b>Адрес: </b>{e.address}</p>
                 <p className="page-of-estate__right_floor">{e.cnt_floors} этаж  {e.cnt_rooms} комн.</p>
+                <p className="page-of-estate__right_floor"><b>Площадь:</b> {e.sq_meters} м2</p> 
+                <p className="page-of-estate__right_floor"><b>Дата публикации: </b>{(e.date_of_upload).slice(8, 10)}.{(e.date_of_upload).slice(5, 7)}.{(e.date_of_upload).slice(0, 4)}</p> 
                 <div className="page-of-estate__right_empl_info">
                     <h2>Объект опубликовал(-а)</h2>
                     <div className="page-of-estate__right_empl_info_bage">
-                    <Link className="page-of-estate__right_empl_info_bage_link" to="/users/1">{e.name} {e.surname}</Link>
+                    <h2 className="page-of-estate__right_empl_info_bage_link">{e.name} {e.surname}</h2>
                         <img  className="page-of-estate__right_empl_info_bage_image" src={e.image_profile} alt="user"/>
                     </div>
                     <button className="page-of-estate__right_empl_info_to-chat btn-inf">Написать сотруднику/покупателю</button>
@@ -168,14 +218,14 @@ function gethhh(iii){
                 <h2 className="page-of-estate__detail_info_h2">Подробная информация</h2>
                 <div className="page-of-estate__detail_info__tech_info">
                     <h3 className="page-of-estate__detail_info__tech_info">Технические характеристики квартиры</h3>
-                    <p className="page-of-estate__detail_info__tech_info">Ремонт: косметический</p>
                     <p className="page-of-estate__detail_info__tech_info">Площадь: {e.sq_meters}м^2</p>
-                    <p className="page-of-estate__detail_info__tech_info">налог: 5 000 руб/год</p>
                     <p className="page-of-estate__detail_info__tech_info">количество комнат: {e.cnt_rooms}</p>
-                    <p className="page-of-estate__detail_info__tech_info">Наличие интернета: да</p>
-                    <p className="page-of-estate__detail_info__tech_info">Наличие каб. ТВ: {e.CATV_avail}</p>
-                    <p className="page-of-estate__detail_info__tech_info">Возможность установки сплит системы/спут. тарекли: требуется разрешение от ЖКХ</p>
-                    <ProgressBar bgcolor={"lime"} completed={ddd + ddf} />
+                    <p className="page-of-estate__detail_info__tech_info">Площадь гостиной: {e.sqm_lvroom}</p>
+                    <p className="page-of-estate__right_floor">Средняя площадь квартир: {e.avg_sqm_room} м2</p> 
+                    <p className="page-of-estate__detail_info__tech_info">Противопожарная сигнализация: {e.firealarm ? <span>Есть</span> : <span>Нет</span>}</p>
+                    <p className="page-of-estate__detail_info__tech_info">Наличие домофона: {e.intercom_avail ? <span>Есть</span> : <span>Нет</span>}</p>
+                    <h3 className="page-of-estate__detail_info__tech_info">Рейтинг безопасности</h3>
+                    <ProgressBar bgcolor={"lime"} completed={ddd + ddf+dda+ddy} />
 
                 </div>
                 <div className="page-of-estate__detail_info">
@@ -187,7 +237,7 @@ function gethhh(iii){
               {e.coords &&
               <YMaps>
               <div>
-                My awesome application with maps!
+                <h2>Местоположение на карте</h2>
                 <Map width={512} height={360} defaultState={{ center: [coordLog, coordLat], zoom: 18 }} >
                 <Placemark geometry={[coordLog, coordLat]} />
           
@@ -197,25 +247,44 @@ function gethhh(iii){
               }  
                 </div>
                 <div className="page-of-estate__detail_info__build_info">
-                    <h3 className="page-of-estate__detail_info__build_info">информаиця о многоквартирном доме</h3>
-                    <p className="page-of-estate__detail_info__build_info">Дом серии: {e.type_buildlng}</p>
-                    <p className="page-of-estate__detail_info__build_info">Дата постройки: 1982</p>
-                    <p className="page-of-estate__detail_info__build_info">Место для охраны/консъержи: </p>
-                    <p className="page-of-estate__detail_info__build_info">Этаж квартиры: {e.cnt_floors}</p>
-                    <p className="page-of-estate__detail_info__build_info">Наличие лифта: {e.elevator_norm && <p>Есть</p>}</p>
-                    <p className="page-of-estate__detail_info__build_info">Наличие г.п. лифта: {e.elevator_large && <p>Есть</p>}</p>
-                    <p className="page-of-estate__detail_info__build_info">Наличие газопровода: нет</p>
-                    <p className="page-of-estate__detail_info__build_info">Площадь парковки: 202.50</p>
-                    <p className="page-of-estate__detail_info__build_info">Мусоропровод: возле лифтовой секции</p>
-                    <p className="page-of-estate__detail_info__build_info">Состояние лифта(-ов): были заменены в 2016 году.</p>
-                    <p className="page-of-estate__detail_info__build_info">ТСЖ/ЖКХ: Управляющая компания «Электростальская коммунальная компания»</p>
-                    <Link className="page-of-estate__detail_info__build_info" to='/build/1/ests'>Аналогичные квартиры в этом доме</Link>
-                    <Link className="page-of-estate__detail_info__build_info" to='https://dom.mingkh.ru//moskovskaya-oblast/elektrostal/344260'>Информация от МинЖКХ</Link>
+                    <h3 className="page-of-estate__detail_info__build_info_text">информаиця о многоквартирном доме</h3>
+                    <p className="page-of-estate__detail_info__build_info_text">Дом серии: {e.name_building}</p>
+                    <p className="page-of-estate__detail_info__build_info_text">Дата постройки: {e.year_of_realise} год</p>
+                    <p className="page-of-estate__detail_info__build_info_text">Максимальное кол-во этажей: {e.floor_cnt}</p>
+                    <p className="page-of-estate__detail_info__build_info_text">Наличие лифта: {e.elevator_norm && <span>Есть</span>}</p>
+                    <p className="page-of-estate__detail_info__build_info_text">Наличие г.п. лифта: {e.elevator_large && <span>Есть</span>}</p>
+                    <p className="page-of-estate__detail_info__build_info_text">Наличие газопровода: {e.gas_avail ? <span>Есть</span> : <span>Нет</span>}</p>
+                    {/* <p className="page-of-estate__detail_info__build_info">Площадь парковки: 202.50</p> */}
+                    <p className="page-of-estate__detail_info__build_info_text">Мусоропровод: {e.trash ? <span>Есть</span> : <span>Нет</span>}</p>
+                    {/* <p className="page-of-estate__detail_info__build_info">Состояние лифта(-ов): были заменены в 2016 году.</p> */}
+                    {/* <p className="page-of-estate__detail_info__build_info">ТСЖ/ЖКХ: Управляющая компания «Электростальская коммунальная компания»</p> */}
+                    {/* <Link className="page-of-estate__detail_info__build_info" to='/build/1/ests'>Аналогичные квартиры в этом доме</Link>
+                    <Link className="page-of-estate__detail_info__build_info" to='https://dom.mingkh.ru//moskovskaya-oblast/elektrostal/344260'>Информация от МинЖКХ</Link> */}
 
 
                 </div>
                 <div className="page-of-estate__detail_info__build_info">
-                    
+                    <h2>Аналогичные объявления квартир</h2>
+                    <div className="catalog__list"> 
+{/*Лист каталога */}
+                {estyy.map((e) => {
+                    return (
+                        <div className="catalog_list_item" key={e.id} onClick={() => {
+                            setModalActive(true)
+                            gethhh(e.id)}}>
+                        <div className="catalog_list_item-img">
+                                <img className="catalog_list_item-img-a" src={e.image1} width="320px" alt="estate"/>
+                            </div>
+                            <div className="catalog_list_item-short-info">
+                                <h2 className="catalog_list_item-short-info__hdr-text">{e.name_object}</h2>
+                                <p className="catalog_list_item-short-info__text">{e.price} {e.currency}</p>
+                                <p className="catalog_list_item-short-info__location">{e.address}</p>
+                                <p className="catalog_list_item-short-info__floor">{e.cnt_floors} этаж  {e.cnt_rooms} комн.</p>
+                            </div>
+                        </div>
+                )
+                    })}
+            </div>
                 </div>
             </div>
             </div>})}

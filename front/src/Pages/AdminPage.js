@@ -5,7 +5,7 @@ import './adminstyle.css'
 import axios from "axios";
 
 export default function AdminPage() {
-
+//localStorage.getItem('id_u')
     const [data, setData] = React.useState([])
     const [est_emp, setest_emp] = React.useState([])
     const [id_user, setID] = React.useState(0)
@@ -18,8 +18,7 @@ let id = localStorage.getItem('cmp_name')
                     console.log(res.data.rows)
                     setData(res.data.rows)
                     setID(res.data.rows[0].id_emp)
-                    setID(res.data.rows[0].id_emp)
-                    localStorage.setItem('Emp_id', (res.data.rows[0].id_emp))
+                    localStorage.setItem('id_u' ,res.data.rows[0].id_emp)
                 })
                 .catch(err => {
                     console.log(err)
@@ -63,7 +62,7 @@ if (admin_status === null){ // если нет админки, то запрещ
         <div className="admin-page" >
             <div className="admin_wrapper" style={ghfgh67546}>
                             <div className="admin-page__left" >
-                <Link className="admin-page__left_btn"  to="/admin/upload"><i class="fa-solid fa-download"></i> Загрузка данных</Link>
+                <Link className="admin-page__left_btn"  to="/admin/upload"><i class="fa-solid fa-download"></i> Загрузка объявления</Link>
                 <Link className="admin-page__left_btn"  to="/admin/add-users"> <i class="fa-solid fa-user-plus"></i>Добавление Пользователей</Link>
                 <Link className="admin-page__left_btn"  to="/admin/table"><i class="fa-solid fa-table"></i> Таблица объявлений недвижимости</Link>
                 {/* <Link className="admin-page__left_btn" to="/admin/chat"> <i className="fa-solid fa-message"></i>Чат с клиентами</Link> */}
@@ -100,15 +99,6 @@ if (admin_status === null){ // если нет админки, то запрещ
                             </div>})}
                     </div>
                 </div>
-                <div className="chat_list">
-            <h2>Чат сайта</h2>
-            <div className="chat_list_wrapper">
-                <div className="chat_list_item">
-                    <h3 className="chat_item_title">Павел Щаников</h3>
-                    <p className="chat_item_last_message">ОК, я понял, спасибо за совет!!!</p>
-                </div>
-            </div>
-        </div>
             </div>
         </div>
     )

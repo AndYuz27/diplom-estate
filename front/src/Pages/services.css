@@ -3,12 +3,17 @@
     background-color: silver;
     margin: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 12px;
+    padding: 24px;
   transition: 0.3s;
   border-radius: 16px;
   box-shadow: 0px 0px 15px #282c34;
+  }
+  .services_list_item_img{
+    width: 320px;
+    height: 240px;
+    object-fit: cover;
   }
   .services_list_item:hover{
   background-color: gray;

@@ -63,7 +63,7 @@ export default function Landing(){
             <div className="choose_type">
                 <h2>Услуги Агентства Недвижимости</h2>
                 <div className="choose_type_items">
-                    <ChooseItem icon={house_img} name_icon="Частные дома" link_icon="/catalog/sep/Загородный дом"/>
+                    {/* <ChooseItem icon={house_img} name_icon="Частные дома" link_icon="/catalog/sep/Загородный дом"/> */}
                     <ChooseItem icon={"https://static.tildacdn.com/tild3261-3865-4838-b363-376432356461/__.svg"} name_icon="Расчёт ипотеки" link_icon="/ipoteka"/>
                     <ChooseItem icon={'https://csq.com/wp-content/uploads/2010/01/566828_thumbnail.jpg'} name_icon="услуги" link_icon="/services"/>
                     <ChooseItem icon={prlst_img} name_icon="Прайс-лист услуг" link_icon="/services-price-List"/>
@@ -80,8 +80,8 @@ export default function Landing(){
             <div className="choose_type">
                 <h2>Как вы хотите приобрети недвижимость?</h2>
                 <div className="choose_type_items_aa">
-                    <ChooseItem icon={buy} name_icon="Купить" link_icon="/catalog/sep/Загородный дом"/>
-                    <ChooseItem icon={rent} name_icon="Снять в аренду" link_icon="/catalog/sep/квартира"/>
+                    <ChooseItem icon={buy} name_icon="Купить" link_icon="/catalog_buy"/>
+                    <ChooseItem icon={rent} name_icon="Снять в аренду" link_icon="/catalog_rent"/>
                 </div>
             </div>
             <div className="last_ad_estate">

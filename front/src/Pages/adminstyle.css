@@ -12,6 +12,15 @@
     align-items: flex-start;
 }
 
+.admin_upload_obj__input_file{
+    padding-bottom:16px ;
+}
+.admin_upload_obj__input_tar{
+    width: 192px;
+    height: 110px;
+    overflow: hidden;
+}
+
 .admin-page{
     display: flex;
     flex-direction: column;

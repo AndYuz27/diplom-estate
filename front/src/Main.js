@@ -1,7 +1,7 @@
 import Landing from "./Pages/Landing";
 import NotFound from './NotFound'
 import { Route, Routes } from "react-router-dom";
-import Catalog from "./Pages/Catalog";
+import Catalog, { CatalogBuyType, CatalogRentalType } from "./Pages/Catalog";
 // import EState from "./EState";
 import AuthClient from "./AuthClient";
 import AuthEmpl from "./AuthEmpl";
@@ -20,18 +20,20 @@ import Chat, { ChatEmpl, ChatList_client, ChatList_empl } from "./Pages/Chat";
 import Feedback from "./Pages/Feedback";
 import AddEmpl from "./Pages/AddEmpl";
 import { FeedbackAdminList, FeedbackAdminPageQestion } from "./Pages/Feedback.Admin";
-import PrivateRoutes from "./PrivateRoutes";
+import PrivateRoutes from "./components/PrivateRoutes";
 // import { Test } from "./NotFound";
 import CntIpoteka from "./Pages/CntIpoteka";
-import NewsLine, { NewsPage } from "./Pages/NewsLine";
+import NewsLine, { CreateNews, NewsPage } from "./Pages/NewsLine";
 import ClientPage from "./components/ClientPage";
 import AddUser from "./Pages/AddUser";
-import PrivateClient from "./PrivateClient";
+import PrivateClient from "./components/PrivateClient";
 export default function Main(){
     return(
         <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/catalog" element={<Catalog />} />
+        <Route path="/catalog_buy" element={<CatalogBuyType />} />
+        <Route path="/catalog_rent" element={<CatalogRentalType />} />
         <Route path="/feedback" element={<Feedback />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:id" element={<ServicePage />} />
@@ -49,6 +51,7 @@ export default function Main(){
             <Route path="/admin/feedback" element={<FeedbackAdminList />} />
             <Route path="/admin/feedback/:id" element={<FeedbackAdminPageQestion />} />
             <Route path="/admin/chatlist" element={<ChatList_empl />} />
+            <Route path="/admin/nw_cr" element={<CreateNews />} />
         </Route>
         <Route path="/about/" element={<AboutOrg />} />
         {/* <Route path="/test/" element={<Test/>} /> */}

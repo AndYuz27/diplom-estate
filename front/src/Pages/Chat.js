@@ -77,6 +77,10 @@ console.log(idClient)
             <div className="chat_wrapper">
 
             <h2 style={{textAlign: 'center'}}>Переписка</h2>
+            <form className="chat_form" onSubmit={submit}>
+                <input className="chat_form_inp" onChange={(e)=> setMessg(e.target.value)} type="text" placeholder="сообщение..."></input>
+                <button className="chat_form_btn">отправить</button>
+            </form>
             <div className="chat_list">
 
                 {messages.map((e) => {
@@ -84,17 +88,13 @@ console.log(idClient)
                     <div className="chat_list_item">
                         <div className="chat_list_item_userdata">
                             {/* <img className="chat_list_item_userdata_img" src={osip} alt="osip"/> */}
-                            <span className="chat_list_item_userdata_name">{e.name_empl || e.name} {e.surname_empl || e.surname}</span>
+                            <span className="chat_list_item_userdata_name">{e.name||e.name_emp} {e.surname||e.surname_empl}</span>
                         </div>
                         <p className="chat_list_item_mesaage">{e.msg}</p>
                     </div>
                     )
                 })}
             </div>
-            <form className="chat_form" onSubmit={submit}>
-                <input className="chat_form_inp" onChange={(e)=> setMessg(e.target.value)} type="text" placeholder="сообщение..."></input>
-                <button className="chat_form_btn">отправить</button>
-            </form>
             </div>
         </div>
     )
@@ -164,6 +164,10 @@ console.log(idClient)
         <div className="chat_wrapper">
 
         <h2 style={{textAlign: 'center'}}>Переписка</h2>
+        <form className="chat_form" onSubmit={submit}>
+            <input className="chat_form_inp" onChange={(e)=> setMessg(e.target.value)} type="text" placeholder="сообщение..."></input>
+            <button className="chat_form_btn">отправить</button>
+        </form>
         <div className="chat_list">
             {messages.map((e) => {
                 return(
@@ -177,10 +181,7 @@ console.log(idClient)
                 )
             })}
         </div>
-        <form className="chat_form" onSubmit={submit}>
-            <input className="chat_form_inp" onChange={(e)=> setMessg(e.target.value)} type="text" placeholder="сообщение..."></input>
-            <button className="chat_form_btn">отправить</button>
-        </form>
+
         </div>
     </div>
     )

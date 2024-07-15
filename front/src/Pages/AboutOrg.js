@@ -28,6 +28,7 @@ export default function AboutOrg(){
                             </div>
                         </div>
                         <button onClick={() => window.location.href = "/about/vacancy"} className="AboutOrg_wrapper_btn">Вакансии</button>
+                        <button onClick={() => window.location.href = "/news"} className="AboutOrg_wrapper_btn">Новости</button>
                     </div>
                 
             })}

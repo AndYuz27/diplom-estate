@@ -84,3 +84,51 @@ export function NewsPage(){
 )
 
 }
+
+export function CreateNews(){
+
+    const [data, setData] = useState({
+        title:  '',
+        date:  '',
+        description:  '',
+        image:  ''
+    })
+
+    function submit(e) {
+        try{
+        e.preventDefault();
+        axios.post(`http://localhost:8080/api/news`, {
+            title:  data.title,
+            date:  new Date(),
+            description:  data.description,
+            image:  data.image 
+        }).then(res => {
+            console.log(res.data)
+            window.location.href="/admin/news"
+        })
+    }catch(err){
+            console.log('ошибка загрузки в базу\n', err)
+            alert('ошибка загрузки данных')
+        }
+
+    }
+
+    function handle(e) {
+        const newdata={...data}
+        newdata[e.target.name] = e.target.value
+        setData(newdata)
+        console.log(newdata)
+        // console.log(crds)
+    }
+    return(
+        <div className="create news">
+            <h2>создание новостной статьи</h2>
+            <form onSubmit={submit} className="admin_upload_obj__form">
+            <label>Название статьи</label><input required="required" onChange={(e)=>handle(e)} value={data.title} className="admin_upload_obj__input" type="text" name="title" placeholder="Текст...."/>
+            <label>Текст</label><textarea rows={50} cols={120} required="required" onChange={(e)=>handle(e)} value={data.description} className="admin_upload_obj__input_tar" type="text" name="description" placeholder="описание...."/>
+            <label>Изображение</label><input required="required" onChange={(e)=>handle(e)} value={data.image} className="admin_upload_obj__input" type="text" name="image" placeholder="ссылка на изображение"/>
+                <button>Отправить</button>
+            </form>
+        </div>
+    )
+}

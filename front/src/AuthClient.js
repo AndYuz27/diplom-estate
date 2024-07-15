@@ -18,7 +18,7 @@ export default function AuthClient(){
       if(res.data === 'AUTH'){
               localStorage.setItem('email_client', email);
               localStorage.setItem('isAuthClient', true)
-              window.location.href=`/client/${email}`;
+              window.location.href=`/client/`;
               console.log('reboot is compl')   
       }else{
         alert('Неверный логин или пароль')

@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 0; 
+
 }
 .chat_list_item_userdata_img{
     width: 32px;
@@ -40,12 +42,14 @@
     align-items: center;
 }
 .chat_list{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-items: flex-start;
-    overflow-y:scroll;
-    height: 100vh;
+    align-items: flex-start; */
+    flex: 1;  /* <------------------- required */
+    overflow-y: auto;  /* <---------- required */
+    flex-direction: column-reverse;
+    min-height: 800px;
     width: 100%;
 }
 .chat_list_item{

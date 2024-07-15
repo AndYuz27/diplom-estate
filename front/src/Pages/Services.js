@@ -26,7 +26,7 @@ export default function Services() {
                 {serveList.map((e)=> {
                     return(
                     <div className="services_list_item" key={e.id} onClick={() => window.location.href=`/services/${e.id}`}>
-                        <img src={e.image} alt={e.name} width="250"/>
+                        <img className='services_list_item_img' src={e.image} alt={e.name} />
                         <div className="services_list_item_descr">
                             <h2 className="services_list_item_descr_title">{e.name}</h2>
                             <p className="services_list_item_descr_p">{e.description}</p>

@@ -41,6 +41,8 @@ function setMdl(e){
     }
 }//
 let st = localStorage.getItem('isAuthCmp')
+let cl = localStorage.getItem('isAuthClient')
+
     return(
         <div className="wrp_hdr">
             <QRCodeSVG width={64} height={64} className="wrp_hdr_qr" value={window.location.href} />
@@ -62,6 +64,7 @@ let st = localStorage.getItem('isAuthCmp')
                     <Link className="header-nav_a" style={style_nav_a} to="/feedback">Обратная связь</Link>
                     {!st && <Link className="header-nav_a" style={style_nav_a} to="/auth/empl">Войти</Link>}
                 {st && <Link  to={`/admin`} className="header-nav_a" >Профиль</Link>}
+                {cl && <Link  to={`/client`} className="header-nav_a" >Профиль килента</Link>}
                 </div>
                 
             </div>
